@@ -76,5 +76,9 @@ Open **[http://localhost:8082](http://localhost:8082)** in your web browser
 You should see login page. You can login into the application using
 credentials:
 
-* student id: 'c3781247' (from [./library_service/migrations/mysql-migrations.sql](./library_service/migrations/mysql-migrations.sql))
+* create new student id using this command as described [here](https://github.com/tvergilio/CESBooks?tab=readme-ov-file#api):
+```
+curl -X POST http://localhost:8082/api/register -H "Content-Type: application/json" -d '{ "studentId": "c1234567" }'
+```
+* student id: 'c1234567'
 * PIN: 000000
