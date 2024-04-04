@@ -1,14 +1,25 @@
+networks:
+  student_portal_network:
+    # network created in Makefile using 'docker network create'
+    external: true
+
 services:
   student_service_db:
     image: 'postgres:latest'
     container_name: student_service_db
     restart: always
+    ports:
+      - '5432:5432'
     environment:
       POSTGRES_DB: ${STUDENT_DB_NAME}
       POSTGRES_USER: ${STUDENT_DB_USER}
       POSTGRES_PASSWORD: ${STUDENT_DB_PASS}
-    ports:
-      - '5432:5432'
+    networks:
+      - student_portal_network
+    healthcheck:
+      test: "psql -U $$POSTGRES_USER $$POSTGRES_DB"
+      timeout: 2s
+      retries: 10
 
   student_service:
     image: 'student_service_image:latest'
@@ -18,6 +29,9 @@ services:
       spring.datasource.username: ${STUDENT_DB_USER}
       spring.datasource.password: ${STUDENT_DB_PASS}
     depends_on:
-      - student_service_db
+      student_service_db:
+        condition: service_healthy
     ports:
       - "8080:8080"
+    networks:
+      - student_portal_network

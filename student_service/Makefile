@@ -1,3 +1,5 @@
+NETWORK_NAME:=student_portal_network
+
 show-env: ## print build environment properties
 	./gradlew --version
 	java --version
@@ -6,13 +8,18 @@ show-env: ## print build environment properties
 build-jar:  ## build and run the application locally
 	./gradlew bootJar
 
+docker-create-network:
+	@if ! docker network ls --filter name=^$(NETWORK_NAME)$$ --format "{{ .Name }}" | grep -q $(NETWORK_NAME); then \
+		docker network create $(NETWORK_NAME); \
+	fi
+	
 build-docker:
 	docker build -t student_service_image:latest .
 
-up: build-jar build-docker
+up: build-jar docker-create-network build-docker
 	docker compose up -d
 
-down:
+down: docker-create-network
 	docker compose down
 
 clean-docker:
