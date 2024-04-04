@@ -6,16 +6,20 @@ show-env: ## print build environment properties
 build-jar:  ## build and run the application locally
 	./gradlew bootJar
 
-up: build-jar
+build-docker:
+	docker build -t student_service_image:latest .
+
+up: build-jar build-docker
 	docker compose up -d
 
 down:
 	docker compose down
 
-run: build-jar up
+clean-docker:
+	docker rmi student_service_image:latest 
 
 app-clean:
 	rm -rf .gradle build
 	./gradlew clean
 
-clean: down app-clean ## clean build-related resources to start build from scratch
+clean: down clean-docker app-clean ## clean build-related resources to start build from scratch
