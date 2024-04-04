@@ -82,3 +82,7 @@ curl -X POST http://localhost:8082/api/register -H "Content-Type: application/js
 ```
 * student id: 'c1234567'
 * PIN: 000000
+
+If you logged in properly you should see the library_service home page like this one:
+
+![library_service home page](./docs/library_service_home_page.png)
