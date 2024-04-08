@@ -10,7 +10,8 @@ build-docker:
 	# clone repo (if not already cloned) -> update requirements.txt -> rebuild docker image locally
 	# then local image is used in docker-compose.yaml
 	echo -e "Rebuilding ces-books:4.0 docker image with up-to-date cs50 in requirments.txt"
-	[ -d /tmp/CESBooks ] || git clone https://github.com/tvergilio/CESBooks /tmp/CESBooks
+	rm -rf /tmp/CESBooks/
+	git clone https://github.com/tvergilio/CESBooks /tmp/CESBooks
 	cd /tmp/CESBooks && \
 	sed -i 's/cs50~=8.0.0/cs50~=9.3.0/g' requirements.txt && \
 	docker build --tag ces-books:4.0 .

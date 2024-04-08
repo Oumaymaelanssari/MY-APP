@@ -86,3 +86,21 @@ curl -X POST http://localhost:8082/api/register -H "Content-Type: application/js
 If you logged in properly you should see the library_service home page like this one:
 
 ![library_service home page](./docs/library_service_home_page.png)
+
+
+## Using portal
+
+If you see the above 6 containers up and running it means your application is
+running properly. You can start to use it.
+
+### Register user
+
+* open register form: [http://localhost:8080/register](http://localhost:8080/register)
+* register your user
+* you should be redirected to login page
+
+### Login registered user
+
+* open register form: [http://localhost:8080/login](http://localhost:8080/login)
+* login registered user
+* you should be redirected to welcome home page
