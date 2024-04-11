@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.oumayma.student_service.repository.UserRepository;
 import com.oumayma.student_service.model.User;
+import com.oumayma.student_service.model.Account;
+import com.oumayma.student_service.service.IntegrationService;
 
 import java.util.ArrayList;
 
@@ -24,9 +26,10 @@ public class UserService implements UserDetailsService {
     //REQUIREMENT: automated dependency injection using Autowired annotation
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private IntegrationService integrationService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -40,6 +43,16 @@ public class UserService implements UserDetailsService {
 
     public User registerNewUserAccount(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.createStudentId();
+        // REQUIREMENT: when new user is created then create relevant accounts
+        // in fincance and library micro services - PART 1
+        this.createStudentAccounts(user);
         return userRepository.save(user);
+    }
+
+    private void createStudentAccounts(User user) {
+        Account account = new Account();
+        account.setStudentId(user.getStudentId());
+        integrationService.createStudentAccounts(account);
     }
 }

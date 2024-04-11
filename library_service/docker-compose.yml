@@ -7,7 +7,7 @@ services:
 
   librarydb:
     image: mariadb
-    container_name: library_service_db
+    container_name: library-service-db
     restart: always
     volumes:
         - ./migrations/mysql-migrations.sql:/docker-entrypoint-initdb.d/mysql-migrations.sql
@@ -31,7 +31,7 @@ services:
 
   libraryapp:
     image: ces-books:4.0
-    container_name: library_service
+    container_name: library-service
     environment:
       DATABASE: mysql://${DB_APPLICATION_USER}:${DB_APPLICATION_PASSWORD}@librarydb:3306/${DB_NAME}
     ports:

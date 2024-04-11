@@ -4,9 +4,9 @@ networks:
     external: true
 
 services:
-  student_service_db:
+  student-service-db:
     image: 'postgres:latest'
-    container_name: student_service_db
+    container_name: student-service-db
     restart: always
     ports:
       - '5432:5432'
@@ -21,15 +21,15 @@ services:
       timeout: 2s
       retries: 10
 
-  student_service:
-    image: 'student_service_image:latest'
-    container_name: student_service
+  student-service:
+    image: 'student-service-image:latest'
+    container_name: student-service
     environment:
-      spring.datasource.url: jdbc:postgresql://student_service_db:5432/${STUDENT_DB_NAME}
+      spring.datasource.url: jdbc:postgresql://student-service-db:5432/${STUDENT_DB_NAME}
       spring.datasource.username: ${STUDENT_DB_USER}
       spring.datasource.password: ${STUDENT_DB_PASS}
     depends_on:
-      student_service_db:
+      student-service-db:
         condition: service_healthy
     ports:
       - "8080:8080"

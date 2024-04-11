@@ -14,7 +14,7 @@ docker-create-network:
 	fi
 	
 build-docker:
-	docker build -t student_service_image:latest .
+	docker build -t student-service-image:latest .
 
 up: build-jar docker-create-network build-docker
 	docker compose up -d
@@ -23,7 +23,7 @@ down: docker-create-network
 	docker compose down
 
 clean-docker:
-	docker rmi student_service_image:latest 
+	docker rmi student-service-image:latest || true
 
 app-clean:
 	rm -rf .gradle build

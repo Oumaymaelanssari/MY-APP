@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import org.apache.commons.lang3.RandomStringUtils;
 
 // thanks to the Entity annotation db tables will be automatically generated
 @Entity
@@ -28,5 +29,15 @@ public class User {
     private String email;
     @Column(nullable = false, unique = true, length = 60)
     private String password;
+    @Column(nullable = true, unique = true, length = 8)
+    private String studentId;
+
+    public void createStudentId() {
+        if (this.studentId == null) {
+            this.studentId = "c" +
+                    RandomStringUtils.random(1, '7', '3') +
+                    RandomStringUtils.randomNumeric(6);
+        }
+    }
 }
 
