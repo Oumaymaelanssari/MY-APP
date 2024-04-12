@@ -15,10 +15,10 @@ public class RegistrationController {
 
     //REQUIREMENT: manually crafted dependency injection (no Autowired used here)
     private UserService userService;
-
     public RegistrationController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/register")
     public ModelAndView showRegistrationForm() {
         ModelAndView mav = new ModelAndView("register");
