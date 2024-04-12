@@ -13,7 +13,7 @@
         <tr>
             <th scope="col" data-sortable="true" class="normal-width">Title</th>
             <th scope="col">Description</th>
-            <th scope="col" data-sortable="true" data-sorter="currencySorter" class="narrow-width">Fee</th>
+            <th scope="col" data-sortable="true" data-sorter="currencySorter" class="narrow-width">Cost</th>
             <th scope="col" class="narrow-width">Action</th>
         </tr>
         </thead>
@@ -21,7 +21,7 @@
         <tr th:each="course : ${courses}">
             <td th:text="${course.title}"></td>
             <td th:text="${course.description}"></td>
-            <td th:text="${#numbers.formatCurrency(course.fee)}"></td>
+            <td th:text="${#numbers.formatCurrency(course.cost)}"></td>
             <td th:text="TBD"></td>
         </tr>
         </tbody>

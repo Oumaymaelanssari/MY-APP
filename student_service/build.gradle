@@ -17,9 +17,9 @@ repositories {
 
 // REQUIREMENT: dependency management using Gradle 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // for spring boot to database connections
+	implementation 'org.springframework.boot:spring-boot-starter-security' // for simplifying implementing register and login
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // for integrate html pages on top of spring boot app
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.postgresql:postgresql:42.2.18'

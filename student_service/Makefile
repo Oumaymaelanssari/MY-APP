@@ -1,3 +1,7 @@
+# include env vars from .env file
+include .env
+export 
+
 NETWORK_NAME:=student_portal_network
 
 show-env: ## print build environment properties
@@ -18,6 +22,8 @@ build-docker:
 
 up: build-jar docker-create-network build-docker
 	docker compose up -d
+	# applying migrations
+	make apply-migrations
 
 down: docker-create-network
 	docker compose down
@@ -28,5 +34,10 @@ clean-docker:
 app-clean:
 	rm -rf .gradle build
 	./gradlew clean
+
+apply-migrations:
+	# insert data to the 'student' db (courses, students etc.)
+	@sleep 3
+	docker exec -i student-service-db psql -U $(STUDENT_DB_USER) -d $(STUDENT_DB_NAME) -f - < ./migrations/insert_data.sql > /dev/null
 
 clean: down clean-docker app-clean ## clean build-related resources to start build from scratch
