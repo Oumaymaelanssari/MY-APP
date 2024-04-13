@@ -31,6 +31,10 @@ public class User {
     private String password;
     @Column(nullable = true, unique = true, length = 8)
     private String studentId;
+    @Column(nullable = true, unique = true, length = 30)
+    private String firstname;
+    @Column(nullable = true, unique = true, length = 30)
+    private String surname;
 
     public void createStudentId() {
         if (this.studentId == null) {

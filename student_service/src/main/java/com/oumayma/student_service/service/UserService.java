@@ -3,13 +3,13 @@ package com.oumayma.student_service.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.oumayma.student_service.config.CustomUserDetails;
 import com.oumayma.student_service.repository.UserRepository;
 import com.oumayma.student_service.model.User;
 import com.oumayma.student_service.model.Account;
@@ -32,13 +32,13 @@ public class UserService implements UserDetailsService {
     private IntegrationService integrationService;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("loadUserByUsername: " + username);
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
+        return new CustomUserDetails(user.getUsername(), user.getPassword(), user.getEmail(), user.getFirstname(), user.getSurname(), user.getStudentId(), new ArrayList<>());
     }
 
     public User registerNewUserAccount(User user) {
