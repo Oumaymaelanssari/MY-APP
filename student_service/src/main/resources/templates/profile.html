@@ -9,7 +9,7 @@
     <p th:inline="text">First Name: [[${profile_user.getFirstname()}]]</p>
     <p th:inline="text">Surname: [[${profile_user.getSurname()}]]</p>
     <p th:inline="text">Student ID: [[${profile_user.getStudentId()}]]</p>
-    <a class="btn btn-primary" th:href="@{'/editProfile/' + ${profile_user.username}}" role="button">Edit Profile</a>
+    <a class="btn btn-primary" th:href="@{/editProfile}" role="button">Edit Profile</a>
 </div>
 </body>
 </html>

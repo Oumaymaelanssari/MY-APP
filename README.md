@@ -105,6 +105,19 @@ running properly. You can start to use it.
 
 ### Login registered user
 
-* open register form: [http://localhost:8080/login](http://localhost:8080/login)
+* open login form: [http://localhost:8080/login](http://localhost:8080/login)
 * login registered user
 * you should be redirected to welcome home page
+
+### View/edit student profile
+
+* open student profile page (login required first): [http://localhost:8080/profile](http://localhost:8080/profile)
+* you should view your profile page (username, firstname, surname, studentId)
+* click 'Edit profile' to edit your profile
+* update your first name and/or username and click 'Update profile'
+* when done you should be redirected back to your profile page where up-to-date data should be displayed
+
+### View courses
+
+* open view courses page (login required first): [http://localhost:8080/courses](http://localhost:8080/courses)
+* you should see list of available courses

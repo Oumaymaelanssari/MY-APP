@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Your Profile</title>
+</head>
+<body>
+<div id="container" class="container">
+    <!--/*@thymesVar id="profile_user" type="com.oumayma.student_service.model.CustomUserDetails"*/-->
+    <form class="form-group" th:action="@{/editProfile}" th:object="${profile_user}"
+          method="post">
+        <h2>Edit Your Profile</h2>
+        <p>
+            <label for="firstname">New first name: </label>
+            <input id="firstname" type="text" th:field="*{firstname}" class="form-control w-25" required/>
+        </p>
+        <p>
+            <label for="surname">New surname: </label>
+            <input id="surname" type="text" th:field="*{surname}" class="form-control w-25" required/>
+        </p>
+        <input id="id" type="hidden" th:field="*{username}"/>
+        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
