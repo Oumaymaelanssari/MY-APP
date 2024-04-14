@@ -21,7 +21,16 @@
             <td th:text="${course.title}"></td>
             <td th:text="${course.description}"></td>
             <td th:text="${#numbers.formatCurrency(course.cost)}"></td>
-            <td th:text="TBD"></td>
+            <td>
+            <div th:if="${enrolledCoursesIds.contains(course.id)}">
+                <span>Enrolled</span>
+            </div>
+            <div th:unless="${enrolledCoursesIds.contains(course.id)}">
+                <form th:action="@{|/courses/${course.id}/enrol|}" method="get">
+                    <button type="submit">Enroll</button>
+                </form>
+            </div>
+            </td>
         </tr>
         </tbody>
     </table>

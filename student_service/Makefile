@@ -36,8 +36,8 @@ app-clean:
 	./gradlew clean
 
 apply-migrations:
-	# insert data to the 'student' db (courses, students etc.)
-	@sleep 3
+	# wait for app to start and insert data to the 'student' db (courses, students etc.)
+	@sleep 5
 	docker exec -i student-service-db psql -U $(STUDENT_DB_USER) -d $(STUDENT_DB_NAME) -f - < ./migrations/insert_data.sql > /dev/null
 
 clean: down clean-docker app-clean ## clean build-related resources to start build from scratch

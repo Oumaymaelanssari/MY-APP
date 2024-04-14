@@ -121,3 +121,16 @@ running properly. You can start to use it.
 
 * open view courses page (login required first): [http://localhost:8080/courses](http://localhost:8080/courses)
 * you should see list of available courses
+
+### Enrol in courses
+
+* open view courses page (login required first): [http://localhost:8080/courses](http://localhost:8080/courses)
+* you should see list of available courses
+* on the right hand side of the courses you should see 'Enroll' button
+* click this button to enroll in the course => It should change to the workd 'Enrolled'
+* you have been enrolled in the course
+
+### View enrolments
+
+* open view courses page (login required first): [http://localhost:8080/enrolments](http://localhost:8080/enrolments)
+* you should see list of enrolled courses
