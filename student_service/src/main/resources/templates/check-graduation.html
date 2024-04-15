@@ -11,5 +11,25 @@
         <p>Your current status is: <b><span th:text="${graduationStatusMessage}"></span></b>.</p>
 
         <p th:if="${!isEligableToGraduate}">Please log into the <a href="http://localhost:8081" target="_blank">Finance Service</a> to pay your outstanding balance.</p>
+        <p th:if="${!isEligableToGraduate}">Please get outstanding invoices reference and log into the <a href="http://localhost:8081" target="_blank">Finance Service</a> to pay them.</p>
+        <div th:if="${!isEligableToGraduate}">
+            <h3>Outstanding invoices</h3>
+            <table class="table" data-toggle="table">
+                <thead>
+                <tr>
+                    <th scope="col">Invoice reference</th>
+                    <th scope="col">Invoice amount</th>
+                    <th scope="col">Invoice due date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="invoice : ${outstandingInvoices}">
+                    <td th:text="${invoice.getReference()}"></td>
+                    <td th:text="${invoice.getAmount()}"></td>
+                    <td th:text="${invoice.getDueDate()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>

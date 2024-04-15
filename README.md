@@ -134,3 +134,10 @@ running properly. You can start to use it.
 
 * open view courses page (login required first): [http://localhost:8080/enrolments](http://localhost:8080/enrolments)
 * you should see list of enrolled courses
+
+### View graduation status
+
+* open view courses page (login required first): [http://localhost:8080/graduation](http://localhost:8080/graduation)
+* you should see your graduation status and list of invoices to pay (if any outstanding invoices exist)
+* you can then get reference numbers of each invoice, login to [Finance Service](http://localhost:8081) and pay them
+* if all invoices are paid your graduation status should be 'ELIGABLE TO GRADUATE'

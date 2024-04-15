@@ -13,7 +13,7 @@ public class Invoice {
         TUITION_FEES
     }
 
-    enum Status {
+    public enum Status {
         OUTSTANDING,
         PAID,
         CANCELLED
@@ -27,5 +27,6 @@ public class Invoice {
     private LocalDate dueDate;
     private Type type;
     private Status status;
+    private String studentId;
     private Account account;
 }

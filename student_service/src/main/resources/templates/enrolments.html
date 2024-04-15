@@ -10,7 +10,6 @@
     <table class="table" data-toggle="table">
         <thead>
         <tr>
-            <th scope="col" data-sortable="true" class="normal-width">Course Id</th>
             <th scope="col">Course title</th>
             <th scope="col">Course description</th>
             <th scope="col">Course cost</th>
@@ -18,7 +17,6 @@
         </thead>
         <tbody>
         <tr th:each="enrolment : ${enrolments}">
-            <td th:text="${enrolment.course.id}"></td>
             <td th:text="${enrolment.course.title}"></td>
             <td th:text="${enrolment.course.description}"></td>
             <td th:text="${enrolment.course.cost}"></td>

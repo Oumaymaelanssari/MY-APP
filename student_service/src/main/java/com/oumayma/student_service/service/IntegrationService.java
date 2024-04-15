@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.oumayma.student_service.model.Account;
 import com.oumayma.student_service.model.Invoice;
+import com.oumayma.student_service.model.InvoicesResponse;
+
+import java.util.List;
+import java.util.Arrays;
 
 @Service
 public class IntegrationService {
@@ -14,6 +18,7 @@ public class IntegrationService {
     private String financeCreateAccountEndpoint = "/accounts";
     private String financeCreateInvoiceEndpoint = "/invoices";
     private String financeGetAccountEndpoint = "/accounts/student/";
+    private String financeGetAllInvoicesEndpoint = "/invoices";
     private String libraryBaseUrl = "http://library-service:80";
     private String libraryCreateAccountEndpoint = "/api/register";
 
@@ -33,5 +38,10 @@ public class IntegrationService {
 
     public Account getStudentFinanceAccount(String studentId) {
         return restTemplate.getForObject(financeBaseUrl + financeGetAccountEndpoint + studentId, Account.class);
+    }
+
+    public List<Invoice> getAllInvoices() {
+        InvoicesResponse resp = restTemplate.getForObject(financeBaseUrl + financeGetAllInvoicesEndpoint, InvoicesResponse.class);
+        return resp.getEmbeddedInvoices().getInvoices();
     }
 }
