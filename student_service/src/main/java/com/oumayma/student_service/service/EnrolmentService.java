@@ -2,7 +2,6 @@ package com.oumayma.student_service.service;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.servlet.ModelAndView;
 import com.oumayma.student_service.model.*;
 import com.oumayma.student_service.repository.EnrolmentRepository;
 import com.oumayma.student_service.repository.UserRepository;

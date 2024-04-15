@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your graduation status</title>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <h2>Your graduation status</h2>
+
+        <p>You need to pay all invoices to be eligible to graduate.</p>
+        <p>Your current status is: <b><span th:text="${graduationStatusMessage}"></span></b>.</p>
+
+        <p th:if="${!isEligableToGraduate}">Please log into the <a href="http://localhost:8081" target="_blank">Finance Service</a> to pay your outstanding balance.</p>
+    </div>
+</body>

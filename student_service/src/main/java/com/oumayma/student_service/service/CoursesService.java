@@ -2,7 +2,6 @@ package com.oumayma.student_service.service;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.servlet.ModelAndView;
 import com.oumayma.student_service.model.*;
 import com.oumayma.student_service.repository.CoursesRepository;
 import com.oumayma.student_service.repository.EnrolmentRepository;
@@ -10,6 +9,7 @@ import com.oumayma.student_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.time.LocalDate;
 
 @Validated
 @Component
@@ -21,6 +21,8 @@ public class CoursesService {
     private EnrolmentRepository enrolmentRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private IntegrationService integrationService;
 
     public List<Course> getAllCourses() {
         return coursesRepository.findAll();
@@ -43,6 +45,23 @@ public class CoursesService {
         enrolment.setUser(student);
         enrolment.setCourse(course);
         enrolmentRepository.save(enrolment);
+
+        // REQUIREMENT: when new user is enroled to the service Invoice is
+        // generated in finance_service
+        this.generateCourseInvoiceInFinanceService(studentId, course);
+    }
+
+    private void generateCourseInvoiceInFinanceService(String studentId, Course course){
+        Account account = new Account();
+        account.setStudentId(studentId);
+
+        Invoice invoice = new Invoice();
+        invoice.setAccount(account);
+        invoice.setType(Invoice.Type.TUITION_FEES);
+        invoice.setAmount(course.getCost());
+        invoice.setDueDate(LocalDate.now().plusWeeks(3));
+
+        integrationService.generateCourseEnrolmentInvoice(invoice);
     }
 }
 
