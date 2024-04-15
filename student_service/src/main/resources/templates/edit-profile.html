@@ -4,6 +4,9 @@
 </head>
 <body>
 <div id="container" class="container">
+    <div th:replace="fragments/nav"></div>
+    <div id="container" class="container">
+
     <!--/*@thymesVar id="profile_user" type="com.oumayma.student_service.model.CustomUserDetails"*/-->
     <form class="form-group" th:action="@{/editProfile}" th:object="${profile_user}"
           method="post">
@@ -19,6 +22,7 @@
         <input id="id" type="hidden" th:field="*{username}"/>
         <button type="submit" class="btn btn-lg btn-primary">Submit</button>
     </form>
+    </div>
 </div>
 </body>
 </html>

@@ -4,12 +4,15 @@
 </head>
 <body>
 <div id="container" class="container">
+    <div th:replace="fragments/nav"></div>
+    <div id="container" class="container">
     <h2 th:inline="text">Your Profile</h2>
     <p th:inline="text">Username: [[${profile_user.getUsername()}]]</p>
     <p th:inline="text">First Name: [[${profile_user.getFirstname()}]]</p>
     <p th:inline="text">Surname: [[${profile_user.getSurname()}]]</p>
     <p th:inline="text">Student ID: [[${profile_user.getStudentId()}]]</p>
     <a class="btn btn-primary" th:href="@{/editProfile}" role="button">Edit Profile</a>
+    </div>
 </div>
 </body>
 </html>
