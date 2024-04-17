@@ -1,4 +1,4 @@
-## Project template generation - used Spring Initializer
+### Project template generation - used Spring Initializer
 
 StudentPortal microservice template has been initialized using https://start.spring.io/. 
 
@@ -23,9 +23,11 @@ make install-system-deps && source $HOME/.bashrc
 On other OSes you need to install it manually other way before working with
 this application.
 
-### Getting started
+### Architectural Overview
 
-## Quick start
+![Architectural overview](./docs/architectural_overview.jpeg)
+
+### Getting started
 
 Run all docker containers of the application using command:
 ```
@@ -143,9 +145,9 @@ running properly. You can start to use it.
 * if all invoices are paid your graduation status should be 'ELIGABLE TO GRADUATE'
 
 
-## Tests
+### Tests
 
-### Unit-tests
+#### Unit-tests
 
 * unit test library has been implemented in the gradle (line 29 in [student_service/build.gradle](./student_service/build.gradle))
 * to run unit tests you can use convenient command from Makefile: **`make unit-test`**
