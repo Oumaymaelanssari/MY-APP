@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Courses</title>
+    <meta th:replace="fragments/header"/>
 </head>
 <body>
 
@@ -29,7 +30,7 @@
             </div>
             <div th:unless="${enrolledCoursesIds.contains(course.id)}">
                 <form th:action="@{|/courses/${course.id}/enrol|}" method="get">
-                    <button type="submit">Enroll</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Enroll</button>
                 </form>
             </div>
             </td>

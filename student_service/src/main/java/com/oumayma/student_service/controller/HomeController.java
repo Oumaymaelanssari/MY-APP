@@ -12,7 +12,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@AuthenticationPrincipal CustomUserDetails user, Model model) {
-        model.addAttribute("message", "Welcome to Student Service, " + user.getFirstname() + " " + user.getSurname() + "!");
+        model.addAttribute("message", "    Welcome to Student Portal, " + user.getFirstname() + " " + user.getSurname() + "!");
         return "home"; // Name of the Thymeleaf template -> triggers file home.html
     }
 }
