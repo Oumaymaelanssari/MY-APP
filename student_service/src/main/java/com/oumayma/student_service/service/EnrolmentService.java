@@ -24,4 +24,3 @@ public class EnrolmentService {
         return enrolmentRepository.findByUser(student);
     }
 }
-

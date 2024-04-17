@@ -26,10 +26,28 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // spring boot library for unit tests
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+    // Configure test logging
+    testLogging {
+        // Ensure that the results for all tests are shown, not just the ones that fail
+        events "passed", "skipped", "failed"
+
+        // Display the following additional information when each test completes
+        afterTest { desc, result ->
+            println "Executing test: ${desc.name} [${desc.className}] with result: ${result.resultType}"
+        }
+
+        // Output a summary upon test completion
+        showStandardStreams = true
+        exceptionFormat = 'full'
+        showExceptions = true
+        showCauses = true
+        showStackTraces = true
+    }
 }
