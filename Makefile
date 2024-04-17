@@ -51,3 +51,6 @@ clean: ## clean app - remove microservices and temporary files to rebuild them f
 	make down-student
 
 down: clean ## stop app (all microservices)
+
+unit-test: ## run unit tests of microservices
+	make -C student_service unit-test

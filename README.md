@@ -141,3 +141,11 @@ running properly. You can start to use it.
 * you should see your graduation status and list of invoices to pay (if any outstanding invoices exist)
 * you can then get reference numbers of each invoice, login to [Finance Service](http://localhost:8081) and pay them
 * if all invoices are paid your graduation status should be 'ELIGABLE TO GRADUATE'
+
+
+## Tests
+
+### Unit-tests
+
+* unit test library has been implemented in the gradle (line 29 in [student_service/build.gradle](./student_service/build.gradle))
+* to run unit tests you can use convenient command from Makefile: **`make unit-test`**
