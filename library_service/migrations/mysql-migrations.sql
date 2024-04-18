@@ -20,7 +20,7 @@ CREATE TABLE student
 INSERT INTO student (id, hash)
 VALUES ("c3781247", "pbkdf2:sha256:260000$U5Vve2Rf4RJUmHwl$a49732f2d1dfd577978a63dce847b2ddd9cac6203aaee52977b36d381d363c43"),
        ("c3922382", "pbkdf2:sha256:260000$U5Vve2Rf4RJUmHwl$a49732f2d1dfd577978a63dce847b2ddd9cac6203aaee52977b36d381d363c43"),
-       ("admin", "pbkdf2:sha256:260000$TkImyuUDBP8Qpx4m$b0845e9575fa336bf53595bb92baf196d845f2ef1b26db448743af5242c0077d");
+       ("admin", "pbkdf2:sha256:260000$ZD6mbicr4vcq9PRe$c450a928d5087f240145b24751199a6b7da57122de1025f398068a4df7698649");
 
 # ----
 # -- Drop table for book
