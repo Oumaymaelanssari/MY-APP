@@ -29,7 +29,18 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import org.springframework.boot.test.mock.mockito.MockBean;
+
 import java.util.Collections;
+import java.util.List;
+import java.util.Arrays;
+
+import com.oumayma.student_service.model.*;
+import com.oumayma.student_service.service.CoursesService;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -39,9 +50,12 @@ public class FunctionalTests {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private CoursesService coursesService;
+
     @BeforeEach
     public void setupSecurityContext() {
-        CustomUserDetails userDetails = new CustomUserDetails("user", "password", "user@example.com", "Firstname", "Surname", "studentId", Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+        CustomUserDetails userDetails = new CustomUserDetails("user", "password", "user@example.com", "Firstname", "Surname", "c01234567", Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
         Authentication auth = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
@@ -59,4 +73,25 @@ public class FunctionalTests {
                     .andExpect(view().name("home"))
                     .andExpect(content().string(containsString("Welcome")));
     }
+
+    @Test
+    @WithMockUser(username = "user", password = "password", roles = "USER")
+    public void testCoursesPage() throws Exception {
+        String studentId = "c01234567"; // Assuming the ID of the logged in user
+        List<Course> coursesList = Arrays.asList(new Course(), new Course());
+        List<Long> enrolledCoursesIds = Arrays.asList(1L);
+
+        when(coursesService.getAllCourses()).thenReturn(coursesList);
+        when(coursesService.getStudentEnrolledCourseIds(studentId)).thenReturn(enrolledCoursesIds);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/courses"))
+               .andExpect(status().isOk())
+               .andExpect(view().name("courses"))
+               .andExpect(model().attribute("courses", coursesList))
+               .andExpect(model().attribute("enrolledCoursesIds", enrolledCoursesIds));
+        
+        verify(coursesService).getAllCourses();
+        verify(coursesService).getStudentEnrolledCourseIds(studentId);
+    }
+
 }

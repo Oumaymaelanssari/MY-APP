@@ -52,8 +52,11 @@ clean: ## clean app - remove microservices and temporary files to rebuild them f
 
 down: clean ## stop app (all microservices)
 
+apply-migrations: ## insert initial data into microservices databases
+	make -C student_service apply-migrations
+
 run-tests: ## run tests of microservices
 	make -C student_service run-tests
 
-test-report: ## open test report after running tests
+test-report: run-tests ## open test report after running tests
 	make -C student_service test-report

@@ -29,9 +29,14 @@ this application.
 
 ### Getting started
 
-Run all docker containers of the application using command:
+Run all docker containers of the microservices using command:
 ```
 make up
+```
+
+Insert initial data into database using:
+```
+make apply-migrations
 ```
 
 Make sure application is up and running using command:
