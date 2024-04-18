@@ -7,17 +7,11 @@ starting development.
 
 ### System requirements
 
-Requirements:
-
-* java
+* java 11
 * docker
 
-On Ubuntu OS, you can install below deps using command: 
-```
-make install-system-deps && source $HOME/.bashrc
-```
-On other OSes you need to install it manually other way before working with
-this application.
+You need to have them installed on your computer to install and use this application.
+Other dependencies will be downloaded and managed by gradle inside the application. 
 
 ### Architectural Overview
 
