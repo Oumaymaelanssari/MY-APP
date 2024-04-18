@@ -150,7 +150,8 @@ running properly. You can start to use it.
 #### Unit-tests
 
 * unit test library has been implemented in the gradle (line 29 in [student_service/build.gradle](./student_service/build.gradle))
-* to run unit tests you can use convenient command from Makefile: **`make unit-test`**
+* to run unit tests you can use convenient command from Makefile: **`make run-tests`**
+* to view test report after running tests use can use command from Makefile: **`make test-report`**
 
 ### Diagrams
 

@@ -42,6 +42,9 @@ apply-migrations:  ## apply database migrations
 
 clean: down clean-docker app-clean ## clean build-related resources to start build from scratch
 
-unit-test: ## run unit tests
+run-tests: ## run tests (unit tests, functional tests, integration tests)
 	./gradlew test
+
+test-report:
+	open build/reports/tests/test/index.html
 
