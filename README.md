@@ -2,11 +2,7 @@
 
 StudentPortal microservice template has been initialized using https://start.spring.io/. 
 
-Following config and dependencies has been selected.
-
-![Spring Initializer Configuration](./docs/spring_initializer.png)
-
-Generate sources has been unzipped to `student_service` directory before
+Generated sources has been unzipped to `student_service` directory before
 starting development.
 
 ### System requirements
