@@ -4,15 +4,10 @@ export
 
 NETWORK_NAME:=student_portal_network
 
-show-env: ## print build environment properties
-	./gradlew --version
-	java --version
-	echo "JAVA_HOME: $(JAVA_HOME)"
-
 build-jar:  ## build and run the application locally
 	./gradlew bootJar
 
-docker-create-network:  ## create docker network, so the microservices to communicate
+docker-create-network:  ## create docker network (if not alrady created), so the microservices to communicate
 	@if ! docker network ls --filter name=^$(NETWORK_NAME)$$ --format "{{ .Name }}" | grep -q $(NETWORK_NAME); then \
 		docker network create $(NETWORK_NAME); \
 	fi

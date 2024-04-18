@@ -37,9 +37,9 @@ make up
 It is alias which triggers series of docker commands to make all services of
 app up and running. 
 The details of this alias can be found in Makefiles of each service:
+* [Makefile of student_service](./student_service/Makefile)
 * [Makefile of finance_service](./finance_service/Makefile)
 * [Makefile of library_service](./library_service/Makefile)
-* [Makefile of student_service](./student_service/Makefile)
 
 Aliases of commands in Makefile simplifies work with the app during development.
 Instead of remember and type long docker commands with parameters we can save
