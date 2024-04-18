@@ -37,7 +37,7 @@ app-clean:  ## clean temporary service resources so service can be rebuild from 
 
 apply-migrations:  ## apply database migrations
 	# wait for app to start and insert data to the 'student' db (courses, students etc.)
-	@sleep 5
+	@sleep 10
 	docker exec -i student-service-db psql -U $(STUDENT_DB_USER) -d $(STUDENT_DB_NAME) -f - < ./migrations/insert_data.sql > /dev/null
 
 clean: down clean-docker app-clean ## clean build-related resources to start build from scratch
