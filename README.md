@@ -56,15 +56,21 @@ Make sure application is up and running using command:
 ```
 docker ps
 ```
-If application is up-and-running you should see following docker containers:
+If application is up-and-running you should see following docker containers and status of each one should be 'Up':
 ![Application containers](./docs/containers.png)
 
-If you see **ALL** the above containers up-and-running open your web browser with this
+If you see **ALL** the above containers up-and-running (status 'Up') open your web browser with this
 URL: 
 
 * **student_service** - [http://localhost:8080](http://localhost:8080)
 * **finance_service** - [http://localhost:8081](http://localhost:8081)
 * **library_service** - [http://localhost:8082](http://localhost:8082)
+
+If you don't see **ALL** the containers up-and-running, then you can try clean the app and start build from scratch:
+```
+make clean
+make up
+```
 
 ### Student service
 
