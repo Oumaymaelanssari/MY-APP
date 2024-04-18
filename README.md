@@ -151,3 +151,9 @@ running properly. You can start to use it.
 
 * unit test library has been implemented in the gradle (line 29 in [student_service/build.gradle](./student_service/build.gradle))
 * to run unit tests you can use convenient command from Makefile: **`make unit-test`**
+
+### Diagrams
+
+#### Class diagram of courses-related classes 
+
+![Courses class diagram](./docs/courses_class_diagram.png)
