@@ -13,7 +13,7 @@ starting development.
 
 Requirements:
 
-* java 11
+* java
 * docker
 
 On Ubuntu OS, you can install below deps using command: 
