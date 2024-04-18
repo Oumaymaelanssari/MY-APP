@@ -135,6 +135,18 @@ running properly. You can start to use it.
 * login registered user
 * you should be redirected to welcome home page
 
+### Login new registered user to finance service
+
+* get studentId of new registered user from [Profile page](http://localhost:8080/profile).
+* Default PIN of Library Service is '000000'.
+* got to [Finance Service](http://localhost:8081) and login
+
+### Login new registered user to library service
+
+* get studentId of new registered user from [Profile page](http://localhost:8080/profile).
+* Default PIN in Library Service is '123456'.
+* got to [Library Service](http://localhost:8082) and login
+
 ### View/edit student profile
 
 * open student profile page (login required first): [http://localhost:8080/profile](http://localhost:8080/profile)
@@ -165,7 +177,9 @@ running properly. You can start to use it.
 
 * open view courses page (login required first): [http://localhost:8080/graduation](http://localhost:8080/graduation)
 * you should see your graduation status and list of invoices to pay (if any outstanding invoices exist)
-* you can then get reference numbers of each invoice, login to [Finance Service](http://localhost:8081) and pay them
+* you can then get reference numbers of each invoice and pay them in Finance Service
+* get studentId of new registered user from [Profile page](http://localhost:8080/profile). Default PIN is '000000'.
+* login to [Finance Service](http://localhost:8081) using the above studentId nad PIN and pay them
 * if all invoices are paid your graduation status should be 'ELIGABLE TO GRADUATE'
 
 
